@@ -9,7 +9,6 @@ class ScoreBoardViewModel extends ChangeNotifier {
   List<int> values6 = [];
   List<int> values7 = [];
   List<int> values8 = [];
-  List<String> names = [];
   int sum1 = 0;
   int sum2 = 0;
   int sum3 = 0;
@@ -23,8 +22,25 @@ class ScoreBoardViewModel extends ChangeNotifier {
     String number1,
     String number2,
   ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
     sum1 = 0;
     sum2 = 0;
     for (int i = 0; i < values1.length; i++) {
@@ -38,9 +54,31 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number2,
       String number3,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -57,10 +95,37 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number3,
       String number4,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
-    values4.add(int.parse(number4));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    valuesConvert.add(int.parse(number4));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
+    if(min == int.parse(number4)){
+      values4.add(0);
+    } else if (min != int.parse(number4)){
+      values4.add(int.parse(number4));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -81,11 +146,43 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number4,
       String number5,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
-    values4.add(int.parse(number4));
-    values5.add(int.parse(number5));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    valuesConvert.add(int.parse(number4));
+    valuesConvert.add(int.parse(number5));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
+    if(min == int.parse(number4)){
+      values4.add(0);
+    } else if (min != int.parse(number4)){
+      values4.add(int.parse(number4));
+    }
+    if(min == int.parse(number5)){
+      values5.add(0);
+    } else if (min != int.parse(number5)){
+      values5.add(int.parse(number5));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -108,12 +205,49 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number5,
       String number6,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
-    values4.add(int.parse(number4));
-    values5.add(int.parse(number5));
-    values6.add(int.parse(number6));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    valuesConvert.add(int.parse(number4));
+    valuesConvert.add(int.parse(number5));
+    valuesConvert.add(int.parse(number6));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
+    if(min == int.parse(number4)){
+      values4.add(0);
+    } else if (min != int.parse(number4)){
+      values4.add(int.parse(number4));
+    }
+    if(min == int.parse(number5)){
+      values5.add(0);
+    } else if (min != int.parse(number5)){
+      values5.add(int.parse(number5));
+    }
+    if(min == int.parse(number6)){
+      values6.add(0);
+    } else if (min != int.parse(number6)){
+      values6.add(int.parse(number6));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -139,13 +273,55 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number6,
       String number7,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
-    values4.add(int.parse(number4));
-    values5.add(int.parse(number5));
-    values6.add(int.parse(number6));
-    values7.add(int.parse(number7));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    valuesConvert.add(int.parse(number4));
+    valuesConvert.add(int.parse(number5));
+    valuesConvert.add(int.parse(number6));
+    valuesConvert.add(int.parse(number7));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
+    if(min == int.parse(number4)){
+      values4.add(0);
+    } else if (min != int.parse(number4)){
+      values4.add(int.parse(number4));
+    }
+    if(min == int.parse(number5)){
+      values5.add(0);
+    } else if (min != int.parse(number5)){
+      values5.add(int.parse(number5));
+    }
+    if(min == int.parse(number6)){
+      values6.add(0);
+    } else if (min != int.parse(number6)){
+      values6.add(int.parse(number6));
+    }
+    if(min == int.parse(number7)){
+      values7.add(0);
+    } else if (min != int.parse(number7)){
+      values7.add(int.parse(number7));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -174,14 +350,60 @@ class ScoreBoardViewModel extends ChangeNotifier {
       String number7,
       String number8,
       ) {
-    values1.add(int.parse(number1));
-    values2.add(int.parse(number2));
-    values3.add(int.parse(number3));
-    values4.add(int.parse(number4));
-    values5.add(int.parse(number5));
-    values6.add(int.parse(number6));
-    values7.add(int.parse(number7));
-    values8.add(int.parse(number8));
+    List<int> valuesConvert = [];
+    valuesConvert.add(int.parse(number1));
+    valuesConvert.add(int.parse(number2));
+    valuesConvert.add(int.parse(number3));
+    valuesConvert.add(int.parse(number4));
+    valuesConvert.add(int.parse(number5));
+    valuesConvert.add(int.parse(number6));
+    valuesConvert.add(int.parse(number7));
+    int min = valuesConvert[0];
+    for(int i=0;i<valuesConvert.length;i++){
+      if(valuesConvert[i]<=min){
+        min = valuesConvert[i];
+      }
+    }
+    if(min == int.parse(number1)){
+      values1.add(0);
+    } else if (min != int.parse(number1)) {
+      values1.add(int.parse(number1));
+    }
+    if(min == int.parse(number2)){
+      values2.add(0);
+    } else if (min != int.parse(number2)){
+      values2.add(int.parse(number2));
+    }
+    if(min == int.parse(number3)){
+      values3.add(0);
+    } else if (min != int.parse(number3)){
+      values3.add(int.parse(number3));
+    }
+    if(min == int.parse(number4)){
+      values4.add(0);
+    } else if (min != int.parse(number4)){
+      values4.add(int.parse(number4));
+    }
+    if(min == int.parse(number5)){
+      values5.add(0);
+    } else if (min != int.parse(number5)){
+      values5.add(int.parse(number5));
+    }
+    if(min == int.parse(number6)){
+      values6.add(0);
+    } else if (min != int.parse(number6)){
+      values6.add(int.parse(number6));
+    }
+    if(min == int.parse(number7)){
+      values7.add(0);
+    } else if (min != int.parse(number7)){
+      values7.add(int.parse(number7));
+    }
+    if(min == int.parse(number8)){
+      values8.add(0);
+    } else if (min != int.parse(number8)){
+      values8.add(int.parse(number8));
+    }
     sum1 = 0;
     sum2 = 0;
     sum3 = 0;
@@ -226,4 +448,21 @@ class ScoreBoardViewModel extends ChangeNotifier {
     numberOfPlayer = number;
     notifyListeners();
   }
+  // void convertMintoZero(
+  //     String number1,
+  //     String number2,
+  //     String number3,
+  //     String number4,){
+  //     List<int> valuesConvert = [];
+  //     valuesConvert.add(int.parse(number1));
+  //     valuesConvert.add(int.parse(number2));
+  //     valuesConvert.add(int.parse(number3));
+  //     valuesConvert.add(int.parse(number4));
+  //     int min = valuesConvert[0];
+  //   for(int i=0;i<valuesConvert.length;i++){
+  //     if(valuesConvert[i]<=min){
+  //       min = valuesConvert[i];
+  //     }
+  //   }
+  // }
 }

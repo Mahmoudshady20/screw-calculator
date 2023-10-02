@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF040C23),
+      backgroundColor: const Color(0xFF24183e),
       bottomNavigationBar: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * .1,
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF121931),
+        backgroundColor: const Color(0xff382c52),
         centerTitle: true,
         title: const Text('ScoreBoard'),
       ),
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFF121931),
+                    color: const Color(0x8edc64a0),
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(20)
                   ),
@@ -149,7 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 2 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 2 ? Colors.white38
+                                  : Colors.transparent,
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     bottomLeft: Radius.circular(20),
@@ -173,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 3 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 3 ?  Colors.white38 : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -193,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 4 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 4 ?  Colors.white38 : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -213,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 5 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 5 ?  Colors.white38 : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -233,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 6 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 6 ?  Colors.white38 : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -253,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 7 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 7 ?  Colors.white38 : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -273,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 8 ?  Colors.blueGrey : Colors.transparent,
+                                  color: value.numberOfPlayer == 8 ?  Colors.white38 : Colors.transparent,
                                   borderRadius: const BorderRadius.only(
                                     topRight: Radius.circular(20),
                                     bottomRight: Radius.circular(20),
@@ -420,7 +421,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   margin: const EdgeInsets.only(bottom: 8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF121931),
+                    color: Colors.white12,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: ElevatedButton(
@@ -449,55 +450,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
     provider.clear();
-    if(provider.numberOfPlayer == 2){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-    }
-    if(provider.numberOfPlayer == 3){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-    }
-    if(provider.numberOfPlayer == 4){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-      provider.names.add(controller4.text);
-    }
-    if(provider.numberOfPlayer == 5){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-      provider.names.add(controller4.text);
-      provider.names.add(controller5.text);
-    }
-    if(provider.numberOfPlayer == 6){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-      provider.names.add(controller4.text);
-      provider.names.add(controller5.text);
-      provider.names.add(controller6.text);
-    }
-    if(provider.numberOfPlayer == 7){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-      provider.names.add(controller4.text);
-      provider.names.add(controller5.text);
-      provider.names.add(controller6.text);
-      provider.names.add(controller7.text);
-    }
-    if(provider.numberOfPlayer == 7){
-      provider.names.add(controller1.text);
-      provider.names.add(controller2.text);
-      provider.names.add(controller3.text);
-      provider.names.add(controller4.text);
-      provider.names.add(controller5.text);
-      provider.names.add(controller6.text);
-      provider.names.add(controller7.text);
-      provider.names.add(controller8.text);
-    }
     Navigator.pushNamed(context, ScoreScreen.routeName, arguments: [
       controller1.text,
       controller2.text,

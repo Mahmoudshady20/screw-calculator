@@ -71,116 +71,173 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
               const SizedBox(
                 height: 15,
               ),
-              CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[0],
-                  controller: controller1,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-
-                      controller1.text = '0';
-                    }
-                    return null;
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[0],
+                        controller: controller1,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller1.text = '0';
+                          }
+                          return null;
+                        }),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[1],
+                        controller: controller2,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller2.text = '0';
+                          }
+                          return null;
+                        }),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 12,
               ),
-              CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[1],
-                  controller: controller2,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }),
+              Row(
+                children: [
+                  provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[2],
+                        controller: controller3,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller3.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[3],
+                        controller: controller4,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller4.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                ],
+              ),
               const SizedBox(
                 height: 12,
               ),
-              provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[2],
-                  controller: controller3,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
+              Row(
+                children: [
+                  provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[4],
+                        controller: controller5,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller5.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[5],
+                        controller: controller6,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller6.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                ],
+              ),
               const SizedBox(
                 height: 12,
               ),
-              provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[3],
-                  controller: controller4,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
+              Row(
+                children: [
+                  provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[6],
+                        controller: controller7,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller7.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  provider.numberOfPlayer == 8 ? Expanded(
+                    child: CustomFormField(
+                        textInputType: TextInputType.number,
+                        label: widget.names[7],
+                        controller: controller8,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            controller8.text = '0';
+                          }
+                          return null;
+                        }),
+                  ) : Container(),
+                ],
+              ),
               const SizedBox(
                 height: 12,
               ),
-              provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[4],
-                  controller: controller5,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
-              const SizedBox(
-                height: 12,
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white12,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent, elevation: 0),
+                    onPressed: () {
+                      add();
+                    },
+                    child: const Text('Add')),
               ),
-              provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[5],
-                  controller: controller6,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
-              const SizedBox(
-                height: 12,
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white12,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent, elevation: 0),
+                    onPressed: () {
+                      add2();
+                    },
+                    child: const Text('Double X2')),
               ),
-              provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[6],
-                  controller: controller7,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
-              const SizedBox(
-                height: 12,
-              ),
-              provider.numberOfPlayer == 8 ? CustomFormField(
-                  textInputType: TextInputType.number,
-                  label: widget.names[7],
-                  controller: controller8,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter your score';
-                    }
-                    return null;
-                  }) : Container(),
-              const SizedBox(
-                height: 12,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    add();
-                  },
-                  child: const Text('Add'))
             ],
           ),
         ),
@@ -255,6 +312,79 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
         controller6.text,
         controller7.text,
         controller8.text,
+      );
+    }
+    _showInterstitialAd();
+    Navigator.pop(context);
+  }
+  void add2() {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    var scoreProvider =
+        Provider.of<ScoreBoardViewModel>(context, listen: false);
+    if(scoreProvider.numberOfPlayer == 2){
+      scoreProvider.addValueInList2Player(
+        // controller1.text,
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 3){
+      scoreProvider.addValueInList3Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 4){
+      scoreProvider.addValueInList4Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+        (int.parse(controller4.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 5){
+      scoreProvider.addValueInList5Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+        (int.parse(controller4.text)*2).toString(),
+        (int.parse(controller5.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 6){
+      scoreProvider.addValueInList6Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+        (int.parse(controller4.text)*2).toString(),
+        (int.parse(controller5.text)*2).toString(),
+        (int.parse(controller6.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 7){
+      scoreProvider.addValueInList7Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+        (int.parse(controller4.text)*2).toString(),
+        (int.parse(controller5.text)*2).toString(),
+        (int.parse(controller6.text)*2).toString(),
+        (int.parse(controller7.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 8){
+      scoreProvider.addValueInList8Player(
+        (int.parse(controller1.text)*2).toString(),
+        (int.parse(controller2.text)*2).toString(),
+        (int.parse(controller3.text)*2).toString(),
+        (int.parse(controller4.text)*2).toString(),
+        (int.parse(controller5.text)*2).toString(),
+        (int.parse(controller6.text)*2).toString(),
+        (int.parse(controller7.text)*2).toString(),
+        (int.parse(controller8.text)*2).toString(),
       );
     }
     _showInterstitialAd();

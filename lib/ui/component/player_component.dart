@@ -9,13 +9,22 @@ class PlayerComponent extends StatelessWidget {
   int sum;
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<ScoreBoardViewModel>(context);
     return  Container(
-      width: MediaQuery.of(context).size.width * .2,
+      width: provider.numberOfPlayer == 2 ? MediaQuery.of(context).size.width * .5 : provider.numberOfPlayer == 3 ? MediaQuery.of(context).size.width * .33 : MediaQuery.of(context).size.width * .25,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Container(
+            width: double.infinity,
+            height: 2,
+            color: const Color(0xFFec8b03),
+          ),
+          Container(
             padding: const EdgeInsets.symmetric(vertical: 8),
+            color: const Color(0xFF66011c),
+            width: double.infinity,
+            alignment:Alignment.center,
             child: Text(playerName,
               style: const TextStyle(
                   color: Colors.white,
@@ -25,8 +34,8 @@ class PlayerComponent extends StatelessWidget {
               ),),),
           Container(
             width: double.infinity,
-            height: 1,
-            color: Colors.white,
+            height: 2,
+            color: const Color(0xFFec8b03),
           ),
           Expanded(
             child: Consumer<ScoreBoardViewModel>(
@@ -43,8 +52,8 @@ class PlayerComponent extends StatelessWidget {
                 itemCount:values.length,
                 separatorBuilder: (context, index) => Container(
                   width: double.infinity,
-                  height: 1,
-                  color: Colors.white,
+                  height: 2,
+                  color: const Color(0xFFec8b03),
                 ),
               ),
             ),
@@ -54,8 +63,8 @@ class PlayerComponent extends StatelessWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: 1,
-                    color: Colors.white,
+                    height: 2,
+                    color: const Color(0xFFec8b03),
                   ),
                   Text('total = $sum',
                     textAlign: TextAlign.center,

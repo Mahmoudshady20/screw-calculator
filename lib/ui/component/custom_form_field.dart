@@ -33,11 +33,11 @@ class CustomFormField extends StatelessWidget {
         labelText: label,
         suffixIcon: suffix,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.cyan,),
+          borderSide: const BorderSide(color: Color(0xFFec8b03),),
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.cyan),
+          borderSide: const BorderSide(color: Color(0xFFec8b03)),
           borderRadius: BorderRadius.circular(15),
         ),
       ),
