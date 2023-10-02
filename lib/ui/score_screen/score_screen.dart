@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
 import 'package:skrocalc/ui/component/dialog_utils.dart';
@@ -15,6 +16,49 @@ class ScoreScreen extends StatefulWidget {
 }
 
 class _ScoreScreenState extends State<ScoreScreen> {
+
+  InterstitialAd? _interstitialAd;
+
+  @override
+  void dispose() {
+    // TODO: Dispose a BannerAd object
+    _interstitialAd?.dispose();
+
+    super.dispose();
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _createInterstitialAd();
+  }
+  void _createInterstitialAd() {
+    InterstitialAd.load(adUnitId: 'ca-app-pub-7674460303083384/8153545582',
+        request: const AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+            onAdLoaded: (InterstitialAd ad) {
+              _interstitialAd = ad;
+            },
+            onAdFailedToLoad: (LoadAdError error) {
+              _interstitialAd = null;
+            }
+        ));
+  }
+  void _showInterstitialAd() {
+    if(_interstitialAd!=null){
+      _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (ad) {
+          ad.dispose();
+          _createInterstitialAd();
+        },
+        onAdFailedToShowFullScreenContent: (ad, error) {
+          ad.dispose();
+          _createInterstitialAd();
+        },
+      );
+      _interstitialAd!.show();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,37 +118,64 @@ class _ScoreScreenState extends State<ScoreScreen> {
                       dismissible: false,
                       negActionName: 'إلغاء',
                       negAction: (){
-
                       }
                   );
-
+                  _showInterstitialAd();
                 },
                 icon: const Icon(Icons.refresh)),
           ),
         ],
       ),
-      body: Row(
-        children: [
-          PlayerComponent(playerName: args[0], values: provider.values1, sum: provider.sum1),
-          Container(
-            height: double.infinity,
-            width: 1,
-            color: Colors.white,
-          ),
-          PlayerComponent(playerName: args[1], values: provider.values2, sum: provider.sum2),
-          Container(
-            height: double.infinity,
-            width: 1,
-            color: Colors.white,
-          ),
-          provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 ? PlayerComponent(playerName: args[2], values: provider.values3, sum: provider.sum3) : Container(),
-          Container(
-            height: double.infinity,
-            width: 1,
-            color: Colors.white,
-          ),
-          provider.numberOfPlayer == 4 ? PlayerComponent(playerName: args[3], values: provider.values4, sum: provider.sum4) : Container(),
-        ],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            PlayerComponent(playerName: args[0], values: provider.values1, sum: provider.sum1),
+            Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ),
+            PlayerComponent(playerName: args[1], values: provider.values2, sum: provider.sum2),
+            provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8  ? PlayerComponent(playerName: args[2], values: provider.values3, sum: provider.sum3) : Container(),
+            provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ?Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? PlayerComponent(playerName: args[3], values: provider.values4, sum: provider.sum4) : Container(),
+            provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ?Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? PlayerComponent(playerName: args[4], values: provider.values5, sum: provider.sum5) : Container(),
+            provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ?Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? PlayerComponent(playerName: args[5], values: provider.values6, sum: provider.sum6) : Container(),
+            provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ?Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? PlayerComponent(playerName: args[6], values: provider.values7, sum: provider.sum7) : Container(),
+            provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ?Container(
+              height: double.infinity,
+              width: 1,
+              color: Colors.white,
+            ) : Container(),
+            provider.numberOfPlayer == 8 ? PlayerComponent(playerName: args[7], values: provider.values8, sum: provider.sum8) : Container(),
+          ],
+        ),
       ),
     );
   }

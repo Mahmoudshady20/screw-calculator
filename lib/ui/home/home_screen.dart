@@ -18,10 +18,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();
-
   TextEditingController controller3 = TextEditingController();
-
   TextEditingController controller4 = TextEditingController();
+  TextEditingController controller5 = TextEditingController();
+  TextEditingController controller6 = TextEditingController();
+  TextEditingController controller7 = TextEditingController();
+  TextEditingController controller8 = TextEditingController();
   int number = 1;
 
   var formKey = GlobalKey<FormState>();
@@ -48,6 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
         }, onAdFailedToLoad: (LoadAdError error) {
           _interstitialAd = null;
         }));
+  }
+  @override
+  void dispose() {
+    // TODO: Dispose a BannerAd object
+    _interstitialAd?.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -104,175 +113,330 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Form(
         key: formKey,
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF121931),
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(20)
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: const Text(
+                    'Swip to select number of players',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Consumer<ScoreBoardViewModel>(
-                      builder: (context, value, child) => InkWell(
-                        onTap: () {
-                          value.updateNumberOfPlayer(2);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: value.numberOfPlayer == 2 ?  Colors.blueGrey : Colors.transparent,
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                              )
-                          ),
-                          padding: const EdgeInsets.all(10),
-                          child: const Text(
-                            '2 player',
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF121931),
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(2);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 2 ?  Colors.blueGrey : Colors.transparent,
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  )
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '2 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    Consumer<ScoreBoardViewModel>(
-                      builder: (context, value, child) => InkWell(
-                        onTap: () {
-                          value.updateNumberOfPlayer(3);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: value.numberOfPlayer == 3 ?  Colors.blueGrey : Colors.transparent,
-                          ),
-                          padding: const EdgeInsets.all(10),
-                          child: const Text(
-                            '3 player',
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Consumer<ScoreBoardViewModel>(
-                      builder: (context, value, child) => InkWell(
-                        onTap: () {
-                          value.updateNumberOfPlayer(4);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: value.numberOfPlayer == 4 ?  Colors.blueGrey : Colors.transparent,
-                              borderRadius: const BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              )
-                          ),
-                          padding: const EdgeInsets.all(10),
-                          child: const Text(
-                            '4 player',
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(3);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 3 ?  Colors.blueGrey : Colors.transparent,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '3 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(4);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 4 ?  Colors.blueGrey : Colors.transparent,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '4 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(5);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 5 ?  Colors.blueGrey : Colors.transparent,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '5 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(6);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 6 ?  Colors.blueGrey : Colors.transparent,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '6 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(7);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 7 ?  Colors.blueGrey : Colors.transparent,
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '7 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Consumer<ScoreBoardViewModel>(
+                          builder: (context, value, child) => InkWell(
+                            onTap: () {
+                              value.updateNumberOfPlayer(8);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: value.numberOfPlayer == 8 ?  Colors.blueGrey : Colors.transparent,
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  )
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: const Text(
+                                '8 player',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: const Text(
-                  'Please enter names',
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: const Text(
+                    'Please enter names',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
                 ),
-              ),
-              Consumer<ScoreBoardViewModel>(
-                builder: (context, value, child) => CustomFormField(
-                    label: 'Player one',
-                    controller: controller1,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    }),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Consumer<ScoreBoardViewModel>(
-                builder: (context, value, child) => CustomFormField(
-                    label: 'Player two',
-                    controller: controller2,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    }),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Consumer<ScoreBoardViewModel>(
-                builder: (context, value, child) => value.numberOfPlayer == 3 ||  value.numberOfPlayer == 4  ? CustomFormField(
-                    label: 'Player three',
-                    controller: controller3,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    }) : Container(),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Consumer<ScoreBoardViewModel>(
-                builder: (context, value, child) => value.numberOfPlayer == 4 ?  CustomFormField(
-                    label: 'Player four',
-                    controller: controller4,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    }) : Container(),
-              ),
-              const Spacer(),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF121931),
-                  borderRadius: BorderRadius.circular(20),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => CustomFormField(
+                      label: 'Player one',
+                      controller: controller1,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }),
                 ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent, elevation: 0),
-                    onPressed: () {
-                      if(number == 1){
-                        _showInterstitialAd();
-                      }
-                      number++;
-                      goTo();
-                    },
-                    child: const Text('Go to the scoreboard screen')),
-              ),
-            ],
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => CustomFormField(
+                      label: 'Player two',
+                      controller: controller2,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => value.numberOfPlayer == 3 ||  value.numberOfPlayer == 4 ||  value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8  ? CustomFormField(
+                      label: 'Player three',
+                      controller: controller3,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => value.numberOfPlayer == 4 ||  value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
+                      label: 'Player four',
+                      controller: controller4,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8   ?  CustomFormField(
+                      label: 'Player Five',
+                      controller: controller5,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) =>  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
+                      label: 'Player Six',
+                      controller: controller6,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
+                      label: 'Player Seven',
+                      controller: controller7,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Consumer<ScoreBoardViewModel>(
+                  builder: (context, value, child) => value.numberOfPlayer == 8 ?  CustomFormField(
+                      label: 'Player Eight',
+                      controller: controller8,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      }) : Container(),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(bottom: 8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF121931),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent, elevation: 0),
+                      onPressed: () {
+                        if(number == 1){
+                          _showInterstitialAd();
+                        }
+                        number++;
+                        goTo();
+                      },
+                      child: const Text('Go to the scoreboard screen')),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -285,11 +449,64 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
     provider.clear();
+    if(provider.numberOfPlayer == 2){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+    }
+    if(provider.numberOfPlayer == 3){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+    }
+    if(provider.numberOfPlayer == 4){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+      provider.names.add(controller4.text);
+    }
+    if(provider.numberOfPlayer == 5){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+      provider.names.add(controller4.text);
+      provider.names.add(controller5.text);
+    }
+    if(provider.numberOfPlayer == 6){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+      provider.names.add(controller4.text);
+      provider.names.add(controller5.text);
+      provider.names.add(controller6.text);
+    }
+    if(provider.numberOfPlayer == 7){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+      provider.names.add(controller4.text);
+      provider.names.add(controller5.text);
+      provider.names.add(controller6.text);
+      provider.names.add(controller7.text);
+    }
+    if(provider.numberOfPlayer == 7){
+      provider.names.add(controller1.text);
+      provider.names.add(controller2.text);
+      provider.names.add(controller3.text);
+      provider.names.add(controller4.text);
+      provider.names.add(controller5.text);
+      provider.names.add(controller6.text);
+      provider.names.add(controller7.text);
+      provider.names.add(controller8.text);
+    }
     Navigator.pushNamed(context, ScoreScreen.routeName, arguments: [
       controller1.text,
       controller2.text,
       controller3.text,
       controller4.text,
+      controller5.text,
+      controller6.text,
+      controller7.text,
+      controller8.text,
     ]);
   }
   void _showInterstitialAd() {

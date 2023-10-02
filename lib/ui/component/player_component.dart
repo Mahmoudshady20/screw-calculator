@@ -9,7 +9,9 @@ class PlayerComponent extends StatelessWidget {
   int sum;
   @override
   Widget build(BuildContext context) {
-    return  Expanded(
+    return  Container(
+      width: MediaQuery.of(context).size.width * .2,
+      height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Container(
