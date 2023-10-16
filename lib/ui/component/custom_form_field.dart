@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 typedef MyValidator = String? Function(String?)?;
 class CustomFormField extends StatelessWidget {
-  String label;
+  String? label;
+  String? hint;
   IconButton? suffix;
   bool isPassword;
   TextEditingController controller;
   TextInputType textInputType;
   int lines;
   MyValidator validator;
-  CustomFormField({super.key, required this.label,this.isPassword = false,required this.controller,
-    this.suffix,this.textInputType = TextInputType.text,this.lines = 1,required this.validator});
+  CustomFormField({super.key, this.label,this.isPassword = false,required this.controller,
+    this.suffix,this.textInputType = TextInputType.text,this.lines = 1,required this.validator, this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,17 @@ class CustomFormField extends StatelessWidget {
             fontSize: 15
         ),
         labelText: label,
+        hintText: hint,
+        hintStyle:const TextStyle(
+            fontWeight: FontWeight.normal,
+            color: Colors.white,
+            fontSize: 15
+        ),
         suffixIcon: suffix,
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.red,),
+          borderRadius: BorderRadius.circular(15),
+        ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFFec8b03),),
           borderRadius: BorderRadius.circular(15),

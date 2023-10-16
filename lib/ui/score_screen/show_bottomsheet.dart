@@ -5,8 +5,7 @@ import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
 import 'package:skrocalc/ui/component/custom_form_field.dart';
 
 class AddScoreBottomSheet extends StatefulWidget {
-  List<String> names;
-  AddScoreBottomSheet({super.key, required this.names});
+  const AddScoreBottomSheet({super.key});
   @override
   State<AddScoreBottomSheet> createState() => _AddScoreBottomSheetState();
 }
@@ -77,7 +76,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[0],
+                        label: provider.names[0],
                         controller: controller1,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -92,7 +91,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[1],
+                        label: provider.names[1],
                         controller: controller2,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -111,7 +110,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[2],
+                        label: provider.names[2],
                         controller: controller3,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -126,7 +125,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[3],
+                        label: provider.names[3],
                         controller: controller4,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -145,7 +144,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[4],
+                        label: provider.names[4],
                         controller: controller5,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -160,7 +159,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[5],
+                        label: provider.names[5],
                         controller: controller6,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -179,7 +178,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[6],
+                        label: provider.names[6],
                         controller: controller7,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -194,7 +193,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[7],
+                        label: provider.names[7],
                         controller: controller8,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -237,6 +236,28 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                       add2();
                     },
                     child: const Text('Double X2')),
+              ),
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white12,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent, elevation: 0),
+                    onPressed: () {
+                      provider.deleteLastElement(_showInterstitialAd);
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'أحذف اخر جولة',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
+                    ),
+                    )),
               ),
             ],
           ),

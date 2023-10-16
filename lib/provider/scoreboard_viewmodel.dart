@@ -9,6 +9,7 @@ class ScoreBoardViewModel extends ChangeNotifier {
   List<int> values6 = [];
   List<int> values7 = [];
   List<int> values8 = [];
+  List<String> names = [];
   int sum1 = 0;
   int sum2 = 0;
   int sum3 = 0;
@@ -18,6 +19,145 @@ class ScoreBoardViewModel extends ChangeNotifier {
   int sum7 = 0;
   int sum8 = 0;
   int numberOfPlayer = 2;
+  void deleteLastElement(void Function() callBack) {
+    if(numberOfPlayer == 2){
+      values1.removeLast();
+      values2.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+      }
+    }
+    else if(numberOfPlayer == 3){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+      }
+    }
+    else if(numberOfPlayer == 4){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      values4.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      sum4 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+        sum4 += values4[i];
+      }
+    }
+    else if(numberOfPlayer == 5){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      values4.removeLast();
+      values5.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      sum4 = 0;
+      sum5 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+        sum4 += values4[i];
+        sum5 += values5[i];
+      }
+    }
+    else if(numberOfPlayer == 6){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      values4.removeLast();
+      values5.removeLast();
+      values6.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      sum4 = 0;
+      sum5 = 0;
+      sum6 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+        sum4 += values4[i];
+        sum5 += values5[i];
+        sum6 += values6[i];
+
+      }
+    }
+    else if(numberOfPlayer == 7){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      values4.removeLast();
+      values5.removeLast();
+      values6.removeLast();
+      values7.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      sum4 = 0;
+      sum5 = 0;
+      sum6 = 0;
+      sum7 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+        sum4 += values4[i];
+        sum5 += values5[i];
+        sum6 += values6[i];
+        sum7 += values7[i];
+      }
+    }
+    else if(numberOfPlayer == 8){
+      values1.removeLast();
+      values2.removeLast();
+      values3.removeLast();
+      values4.removeLast();
+      values5.removeLast();
+      values6.removeLast();
+      values7.removeLast();
+      values8.removeLast();
+      sum1 = 0;
+      sum2 = 0;
+      sum3 = 0;
+      sum4 = 0;
+      sum5 = 0;
+      sum6 = 0;
+      sum7 = 0;
+      sum8 = 0;
+      for (int i = 0; i < values1.length; i++) {
+        sum1 += values1[i];
+        sum2 += values2[i];
+        sum3 += values3[i];
+        sum4 += values4[i];
+        sum5 += values5[i];
+        sum6 += values6[i];
+        sum7 += values7[i];
+        sum8 += values8[i];
+      }
+    }
+    callBack;
+    notifyListeners();
+  }
+
   void addValueInList2Player(
     String number1,
     String number2,

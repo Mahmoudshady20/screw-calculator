@@ -35,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
       'https://instagram.com/sheks_app?igshid=OGQ5ZDc2ODk2ZA==');
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _createInterstitialAd();
   }
@@ -53,7 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   void dispose() {
-    // TODO: Dispose a BannerAd object
     _interstitialAd?.dispose();
 
     super.dispose();
@@ -448,9 +446,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!formKey.currentState!.validate()) {
       return;
     }
-    var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
-    provider.clear();
-    Navigator.pushNamed(context, ScoreScreen.routeName, arguments: [
+var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
+    provider.names.addAll( [
       controller1.text,
       controller2.text,
       controller3.text,
@@ -460,6 +457,8 @@ class _HomeScreenState extends State<HomeScreen> {
       controller7.text,
       controller8.text,
     ]);
+    provider.clear();
+    Navigator.pushNamed(context, ScoreScreen.routeName);
   }
   void _showInterstitialAd() {
     if (_interstitialAd != null) {
@@ -477,3 +476,5 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 }
+
+

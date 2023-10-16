@@ -11,7 +11,7 @@ class PlayerComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<ScoreBoardViewModel>(context);
     return  Container(
-      width: provider.numberOfPlayer == 2 ? MediaQuery.of(context).size.width * .5 : provider.numberOfPlayer == 3 ? MediaQuery.of(context).size.width * .33 : MediaQuery.of(context).size.width * .25,
+      width: provider.numberOfPlayer == 2 ? MediaQuery.of(context).size.width * .49: provider.numberOfPlayer == 3 ? MediaQuery.of(context).size.width * .33 : MediaQuery.of(context).size.width * .25,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
