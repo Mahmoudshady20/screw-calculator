@@ -5,7 +5,8 @@ import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
 import 'package:skrocalc/ui/component/custom_form_field.dart';
 
 class AddScoreBottomSheet extends StatefulWidget {
-  const AddScoreBottomSheet({super.key});
+  const AddScoreBottomSheet({super.key,required this.names});
+  final List<String> names;
   @override
   State<AddScoreBottomSheet> createState() => _AddScoreBottomSheetState();
 }
@@ -76,7 +77,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[0],
+                        label: widget.names[0],
                         controller: controller1,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -91,7 +92,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[1],
+                        label: widget.names[1],
                         controller: controller2,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -110,7 +111,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[2],
+                        label: widget.names[2],
                         controller: controller3,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -125,7 +126,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[3],
+                        label: widget.names[3],
                         controller: controller4,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -144,7 +145,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[4],
+                        label: widget.names[4],
                         controller: controller5,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -159,7 +160,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[5],
+                        label: widget.names[5],
                         controller: controller6,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -178,7 +179,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[6],
+                        label: widget.names[6],
                         controller: controller7,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -193,7 +194,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: provider.names[7],
+                        label: widget.names[7],
                         controller: controller8,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {

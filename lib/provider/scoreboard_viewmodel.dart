@@ -9,7 +9,6 @@ class ScoreBoardViewModel extends ChangeNotifier {
   List<int> values6 = [];
   List<int> values7 = [];
   List<int> values8 = [];
-  List<String> names = [];
   int sum1 = 0;
   int sum2 = 0;
   int sum3 = 0;

@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
 import 'package:skrocalc/ui/component/custom_form_field.dart';
 import 'package:skrocalc/ui/score_screen/score_screen.dart';
-import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'homeScreen';
@@ -29,10 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   var formKey = GlobalKey<FormState>();
   InterstitialAd? _interstitialAd;
 
-  Uri islamiUrl = Uri.parse(
-      'https://play.google.com/store/apps/details?id=com.mahmoudshady.islamiApp');
-  Uri instaUrl = Uri.parse(
-      'https://instagram.com/sheks_app?igshid=OGQ5ZDc2ODk2ZA==');
   @override
   void initState() {
     super.initState();
@@ -50,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _interstitialAd = null;
         }));
   }
+
   @override
   void dispose() {
     _interstitialAd?.dispose();
@@ -61,49 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF24183e),
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height * .1,
-        decoration: const BoxDecoration(
-          color: Colors.white12,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            InkWell(
-              onTap: () {
-                launcher.launchUrl(instaUrl,
-                    mode: launcher.LaunchMode.externalApplication);
-              },
-              child: const Text(
-                'تواصل معنا',
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    color: Colors.white),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                launcher.launchUrl(islamiUrl,
-                    mode: launcher.LaunchMode.externalApplication);
-              },
-              child: const Text(
-                'حمل الأن تطبق اسلامي من متجر جوجل بلاي',
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
       appBar: AppBar(
         backgroundColor: const Color(0xff382c52),
         centerTitle: true,
@@ -122,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: const Text(
-                    'Swip to select number of players',
+                    'Swip to choose number of players',
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
@@ -131,10 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: const Color(0x8edc64a0),
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(20)
-                  ),
+                      color: const Color(0x8edc64a0),
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20)),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -147,13 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 2 ? Colors.white38
-                                  : Colors.transparent,
+                                  color: value.numberOfPlayer == 2
+                                      ? Colors.white38
+                                      : Colors.transparent,
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     bottomLeft: Radius.circular(20),
-                                  )
-                              ),
+                                  )),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
                                 '2 player',
@@ -172,7 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 3 ?  Colors.white38 : Colors.transparent,
+                                color: value.numberOfPlayer == 3
+                                    ? Colors.white38
+                                    : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -192,7 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 4 ?  Colors.white38 : Colors.transparent,
+                                color: value.numberOfPlayer == 4
+                                    ? Colors.white38
+                                    : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -212,7 +168,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 5 ?  Colors.white38 : Colors.transparent,
+                                color: value.numberOfPlayer == 5
+                                    ? Colors.white38
+                                    : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -232,7 +190,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 6 ?  Colors.white38 : Colors.transparent,
+                                color: value.numberOfPlayer == 6
+                                    ? Colors.white38
+                                    : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -252,7 +212,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 7 ?  Colors.white38 : Colors.transparent,
+                                color: value.numberOfPlayer == 7
+                                    ? Colors.white38
+                                    : Colors.transparent,
                               ),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
@@ -272,12 +234,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: value.numberOfPlayer == 8 ?  Colors.white38 : Colors.transparent,
+                                  color: value.numberOfPlayer == 8
+                                      ? Colors.white38
+                                      : Colors.transparent,
                                   borderRadius: const BorderRadius.only(
                                     topRight: Radius.circular(20),
                                     bottomRight: Radius.circular(20),
-                                  )
-                              ),
+                                  )),
                               padding: const EdgeInsets.all(10),
                               child: const Text(
                                 '8 player',
@@ -332,85 +295,116 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) => value.numberOfPlayer == 3 ||  value.numberOfPlayer == 4 ||  value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8  ? CustomFormField(
-                      label: 'Player three',
-                      controller: controller3,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) =>
+                      value.numberOfPlayer == 3 ||
+                              value.numberOfPlayer == 4 ||
+                              value.numberOfPlayer == 5 ||
+                              value.numberOfPlayer == 6 ||
+                              value.numberOfPlayer == 7 ||
+                              value.numberOfPlayer == 8
+                          ? CustomFormField(
+                              label: 'Player three',
+                              controller: controller3,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              })
+                          : Container(),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) => value.numberOfPlayer == 4 ||  value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
-                      label: 'Player four',
-                      controller: controller4,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) =>
+                      value.numberOfPlayer == 4 ||
+                              value.numberOfPlayer == 5 ||
+                              value.numberOfPlayer == 6 ||
+                              value.numberOfPlayer == 7 ||
+                              value.numberOfPlayer == 8
+                          ? CustomFormField(
+                              label: 'Player four',
+                              controller: controller4,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              })
+                          : Container(),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) => value.numberOfPlayer == 5 ||  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8   ?  CustomFormField(
-                      label: 'Player Five',
-                      controller: controller5,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) =>
+                      value.numberOfPlayer == 5 ||
+                              value.numberOfPlayer == 6 ||
+                              value.numberOfPlayer == 7 ||
+                              value.numberOfPlayer == 8
+                          ? CustomFormField(
+                              label: 'Player Five',
+                              controller: controller5,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              })
+                          : Container(),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) =>  value.numberOfPlayer == 6 ||  value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
-                      label: 'Player Six',
-                      controller: controller6,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) =>
+                      value.numberOfPlayer == 6 ||
+                              value.numberOfPlayer == 7 ||
+                              value.numberOfPlayer == 8
+                          ? CustomFormField(
+                              label: 'Player Six',
+                              controller: controller6,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              })
+                          : Container(),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) => value.numberOfPlayer == 7 ||  value.numberOfPlayer == 8 ?  CustomFormField(
-                      label: 'Player Seven',
-                      controller: controller7,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) =>
+                      value.numberOfPlayer == 7 || value.numberOfPlayer == 8
+                          ? CustomFormField(
+                              label: 'Player Seven',
+                              controller: controller7,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              })
+                          : Container(),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Consumer<ScoreBoardViewModel>(
-                  builder: (context, value, child) => value.numberOfPlayer == 8 ?  CustomFormField(
-                      label: 'Player Eight',
-                      controller: controller8,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your name';
-                        }
-                        return null;
-                      }) : Container(),
+                  builder: (context, value, child) => value.numberOfPlayer == 8
+                      ? CustomFormField(
+                          label: 'Player Eight',
+                          controller: controller8,
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please enter your name';
+                            }
+                            return null;
+                          })
+                      : Container(),
                 ),
                 const SizedBox(
                   height: 20,
@@ -426,7 +420,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent, elevation: 0),
                       onPressed: () {
-                        if(number == 1){
+                        if (number == 1) {
                           _showInterstitialAd();
                         }
                         number++;
@@ -446,8 +440,9 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!formKey.currentState!.validate()) {
       return;
     }
-var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
-    provider.names.addAll( [
+    var provider = Provider.of<ScoreBoardViewModel>(context, listen: false);
+    provider.clear();
+    Navigator.pushNamed(context, ScoreScreen.routeName, arguments: [
       controller1.text,
       controller2.text,
       controller3.text,
@@ -457,9 +452,8 @@ var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
       controller7.text,
       controller8.text,
     ]);
-    provider.clear();
-    Navigator.pushNamed(context, ScoreScreen.routeName);
   }
+
   void _showInterstitialAd() {
     if (_interstitialAd != null) {
       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
@@ -476,5 +470,3 @@ var provider = Provider.of<ScoreBoardViewModel>(context,listen: false);
     }
   }
 }
-
-
