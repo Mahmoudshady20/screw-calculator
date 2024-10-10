@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 typedef MyValidator = String? Function(String?)?;
 class CustomFormField extends StatelessWidget {
-  String? label;
-  String? hint;
-  IconButton? suffix;
-  bool isPassword;
-  TextEditingController controller;
-  TextInputType textInputType;
-  int lines;
-  MyValidator validator;
-  CustomFormField({super.key, this.label,this.isPassword = false,required this.controller,
+  final String? label;
+  final String? hint;
+  final IconButton? suffix;
+  final bool isPassword;
+  final TextEditingController controller;
+  final TextInputType textInputType;
+  final int lines;
+  final MyValidator validator;
+  const CustomFormField({super.key, this.label,this.isPassword = false,required this.controller,
     this.suffix,this.textInputType = TextInputType.text,this.lines = 1,required this.validator, this.hint});
 
   @override

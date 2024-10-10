@@ -1,53 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:skrocalc/provider/name_model.dart';
 import 'package:provider/provider.dart';
 import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
 import 'package:skrocalc/ui/component/custom_form_field.dart';
 
 class AddScoreBottomSheet extends StatefulWidget {
   const AddScoreBottomSheet({super.key,required this.names});
-  final List<String> names;
+  final NameModel names;
   @override
   State<AddScoreBottomSheet> createState() => _AddScoreBottomSheetState();
 }
 
 class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
-  TextEditingController controller1 = TextEditingController();
-
-  TextEditingController controller2 = TextEditingController();
-
-  TextEditingController controller3 = TextEditingController();
-
-  TextEditingController controller4 = TextEditingController();
-
-  TextEditingController controller5 = TextEditingController();
-
-  TextEditingController controller6 = TextEditingController();
-
-  TextEditingController controller7 = TextEditingController();
-
-  TextEditingController controller8 = TextEditingController();
+  late TextEditingController controller1;
+  late TextEditingController controller2;
+  late TextEditingController controller3;
+  late TextEditingController controller4;
+  late TextEditingController controller5;
+  late TextEditingController controller6;
+  late TextEditingController controller7;
+  late TextEditingController controller8;
 
   var formKey = GlobalKey<FormState>();
-  InterstitialAd? _interstitialAd;
+  late bool isInterstitialAdLoaded;
+  late InterstitialAd _interstitialAd;
 
+  @override
+  void dispose() {
+    _interstitialAd.dispose();
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
+    controller4.dispose();
+    controller5.dispose();
+    controller6.dispose();
+    controller7.dispose();
+    controller8.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
-    // TODO: implement initState
+    isInterstitialAdLoaded = false;
+    controller1 = TextEditingController();
+    controller2 = TextEditingController();
+    controller3 = TextEditingController();
+    controller4 = TextEditingController();
+    controller5 = TextEditingController();
+    controller6 = TextEditingController();
+    controller7 = TextEditingController();
+    controller8 = TextEditingController();
+    adLoaded();
+
     super.initState();
-    _createInterstitialAd();
   }
-  void _createInterstitialAd() {
-    InterstitialAd.load(adUnitId: 'ca-app-pub-7674460303083384/8153545582',
+
+  adLoaded() async {
+    InterstitialAd.load(
+        adUnitId: 'ca-app-pub-7674460303083384/8153545582',
         request: const AdRequest(),
         adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (InterstitialAd ad) {
+          onAdLoaded: (ad) {
+            setState(() {
               _interstitialAd = ad;
-            },
-            onAdFailedToLoad: (LoadAdError error) {
-              _interstitialAd = null;
-            }
+              isInterstitialAdLoaded = true;
+            });
+          },
+          onAdFailedToLoad: (error) {
+            _interstitialAd.dispose();
+          },
         ));
   }
   @override
@@ -67,6 +89,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
         key: formKey,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(
                 height: 15,
@@ -77,7 +100,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[0],
+                        label:  provider.numberOfPlayer == 9 ? 'اللاعب الاول التيم الاول' :   widget.names.name1,
                         controller: controller1,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -92,7 +115,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[1],
+                        label:   provider.numberOfPlayer == 9 ? 'اللاعب الثاني التيم الاول' :   widget.names.name2,
                         controller: controller2,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -108,10 +131,10 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
               ),
               Row(
                 children: [
-                  provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                  provider.numberOfPlayer == 3 || provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 || provider.numberOfPlayer == 9 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[2],
+                        label: provider.numberOfPlayer == 9 ? 'اللاعب الاول التيم الثاني' :  widget.names.name3,
                         controller: controller3,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -123,10 +146,10 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   const SizedBox(
                     width: 8,
                   ),
-                  provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
+                  provider.numberOfPlayer == 4 || provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 || provider.numberOfPlayer == 9? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[3],
+                        label:  provider.numberOfPlayer == 9 ? 'اللاعب الثاني التيم الثاني' :   widget.names.name4,
                         controller: controller4,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -145,7 +168,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 5 || provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[4],
+                        label: widget.names.name5,
                         controller: controller5,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -160,7 +183,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 6 || provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[5],
+                        label: widget.names.name6,
                         controller: controller6,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -179,7 +202,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 7 || provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[6],
+                        label: widget.names.name7,
                         controller: controller7,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -194,7 +217,7 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
                   provider.numberOfPlayer == 8 ? Expanded(
                     child: CustomFormField(
                         textInputType: TextInputType.number,
-                        label: widget.names[7],
+                        label: widget.names.name8,
                         controller: controller8,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -208,58 +231,48 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
               const SizedBox(
                 height: 12,
               ),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white12,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent, elevation: 0),
-                    onPressed: () {
-                      add();
-                    },
-                    child: const Text('Add')),
-              ),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white12,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent, elevation: 0),
-                    onPressed: () {
-                      add2();
-                    },
-                    child: const Text('Double X2')),
-              ),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white12,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent, elevation: 0),
-                    onPressed: () {
-                      provider.deleteLastElement(_showInterstitialAd);
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      'أحذف اخر جولة',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                    ),
-                    )),
-              ),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white12, elevation: 0,shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+                  onPressed: () {
+                    add();
+                  },
+                  child: const Text('Add',style: TextStyle(
+                    color: Colors.white,
+                  ),)),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white12, elevation: 0,shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+                  onPressed: () {
+                    add2();
+                  },
+                  child: const Text('Double X2',style: TextStyle(
+                    color: Colors.white,
+                  ),)),
+              ElevatedButton(
+                  style:ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white12, elevation: 0,shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+                  onPressed: () async{
+                    provider.deleteLastElement();
+                    if (isInterstitialAdLoaded == true) {
+                      await _interstitialAd.show();
+                    }
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'أحذف اخر جولة',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
+                  ),
+                  )),
             ],
           ),
         ),
@@ -267,8 +280,8 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
     );
   }
 
-  void add() {
-    if (!formKey.currentState!.validate()) {
+  void add() async{
+    if (!formKey.currentState!.validate()){
       return;
     }
     var scoreProvider =
@@ -336,10 +349,20 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
         controller8.text,
       );
     }
-    _showInterstitialAd();
+    else if(scoreProvider.numberOfPlayer == 9){
+      scoreProvider.addValueInListSahebSahbo(
+        controller1.text,
+        controller2.text,
+        controller3.text,
+        controller4.text
+      );
+    }
+    if (isInterstitialAdLoaded == true) {
+      await _interstitialAd.show();
+    }
     Navigator.pop(context);
   }
-  void add2() {
+  void add2() async{
     if (!formKey.currentState!.validate()) {
       return;
     }
@@ -350,6 +373,14 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
         // controller1.text,
         (int.parse(controller1.text)*2).toString(),
         (int.parse(controller2.text)*2).toString(),
+      );
+    }
+    else if(scoreProvider.numberOfPlayer == 9){
+      scoreProvider.addValueInListSahebSahbo(
+      (int.parse(controller1.text)*2).toString(),
+      (int.parse(controller2.text)*2).toString(),
+      (int.parse(controller3.text)*2).toString(),
+      (int.parse(controller4.text)*2).toString(),
       );
     }
     else if(scoreProvider.numberOfPlayer == 3){
@@ -409,23 +440,10 @@ class _AddScoreBottomSheetState extends State<AddScoreBottomSheet> {
         (int.parse(controller8.text)*2).toString(),
       );
     }
-    _showInterstitialAd();
-    Navigator.pop(context);
-  }
-  void _showInterstitialAd() {
-    if(_interstitialAd!=null){
-      _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-        onAdDismissedFullScreenContent: (ad) {
-          ad.dispose();
-          _createInterstitialAd();
-        },
-        onAdFailedToShowFullScreenContent: (ad, error) {
-          ad.dispose();
-          _createInterstitialAd();
-        },
-      );
-      _interstitialAd!.show();
+    if (isInterstitialAdLoaded == true) {
+      await _interstitialAd.show();
     }
+    Navigator.pop(context);
   }
 
 }

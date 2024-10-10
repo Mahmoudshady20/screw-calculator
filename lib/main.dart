@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:provider/provider.dart';
 import 'package:skrocalc/provider/scoreboard_viewmodel.dart';
+import 'package:skrocalc/ui/free/freee.dart';
+import 'package:provider/provider.dart';
 import 'package:skrocalc/ui/home/home_screen.dart';
 import 'package:skrocalc/ui/score_screen/score_screen.dart';
-import 'package:skrocalc/ui/splach_screen/splash_screen.dart';
+import 'package:skrocalc/ui/splash_screen/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding();
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName : (context) => const HomeScreen(),
         ScoreScreen.routeName : (context) => const ScoreScreen(),
-        SplashScreen.routeName : (context) => const SplashScreen()
+        SplashScreen.routeName : (context) => const SplashScreen(),
+        Free.routeName : (context) => Free(),
       },
     );
   }
